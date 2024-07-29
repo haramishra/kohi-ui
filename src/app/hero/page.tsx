@@ -1,1 +1,0 @@
-const Pages = [{ path: "" }];
