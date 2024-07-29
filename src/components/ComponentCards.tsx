@@ -4,8 +4,8 @@ import Card from "./Card";
 
 const data = [
   {
-    title: "Button",
-    component: <div />,
+    title: "Hero",
+    image: "/images/hero.webp",
     link: "/components/button",
   },
   {
