@@ -1,3 +1,5 @@
+import UICntainer from "@/components/ui-container";
+
 export default function Logocloud() {
   const components = [
     {
@@ -18,5 +20,5 @@ export default function Logocloud() {
     },
   ];
 
-  return <div></div>;
+  return <UICntainer iframeSrc={components[0].path} />;
 }
