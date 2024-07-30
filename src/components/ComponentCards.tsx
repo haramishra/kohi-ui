@@ -6,32 +6,32 @@ const data = [
   {
     title: "Hero",
     image: "/images/hero.webp",
-    link: "/components/button",
+    link: "/ui/hero",
   },
   {
     title: "Loaders",
     image: "/images/ui/loader.png",
-    link: "/components/loaders",
+    link: "/ui/loaders",
   },
   {
     title: "Text",
     component: <div />,
-    link: "/components/text",
+    link: "/ui/text",
   },
   {
     title: "Input",
     image: "/images/ui/input.png",
-    link: "/components/input",
+    link: "/ui/input",
   },
   {
     title: "Tab",
     image: "/images/ui/tabs.png",
-    link: "/components/tabs",
+    link: "/ui/tabs",
   },
   {
     title: "Toggle",
     component: <div />,
-    link: "/components/toggle",
+    link: "/ui/toggle",
   },
 ];
 
