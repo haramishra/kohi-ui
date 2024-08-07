@@ -1,3 +1,5 @@
+import ComponentsContainer from "@/components/ui/component-container";
+
 export default function Content() {
   const components = [
     {
@@ -18,5 +20,16 @@ export default function Content() {
     },
   ];
 
-  return <div></div>;
+  return (
+    <div>
+      {components.map((component) => (
+        <div key={component.path}>
+          <ComponentsContainer
+            iframeSrc={component.path}
+            name={component.name}
+          />
+        </div>
+      ))}
+    </div>
+  );
 }

@@ -1,3 +1,5 @@
+import ComponentsContainer from "@/components/ui/component-container";
+
 export default function Navbar() {
   const components = [
     {
@@ -29,5 +31,16 @@ export default function Navbar() {
       name: "Example 7",
     },
   ];
-  return <div></div>;
+  return (
+    <div>
+      {components.map((component) => (
+        <div key={component.path}>
+          <ComponentsContainer
+            iframeSrc={component.path}
+            name={component.name}
+          />
+        </div>
+      ))}
+    </div>
+  );
 }

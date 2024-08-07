@@ -1,4 +1,5 @@
 import UICntainer from "@/components/ui-container";
+import ComponentsContainer from "@/components/ui/component-container";
 
 export default function Logocloud() {
   const components = [
@@ -20,5 +21,16 @@ export default function Logocloud() {
     },
   ];
 
-  return <UICntainer iframeSrc={components[0].path} />;
+  return (
+    <div>
+      {components.map((component) => (
+        <div key={component.path}>
+          <ComponentsContainer
+            iframeSrc={component.path}
+            name={component.name}
+          />
+        </div>
+      ))}
+    </div>
+  );
 }
