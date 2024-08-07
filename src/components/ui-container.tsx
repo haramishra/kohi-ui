@@ -1,6 +1,7 @@
 "use client";
 import { Highlight, themes } from "prism-react-renderer";
 import { useEffect, useRef, useState } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface IframeContentExtractorProps {
   iframeSrc: string;
@@ -9,6 +10,7 @@ interface IframeContentExtractorProps {
 const UICntainer: React.FC<IframeContentExtractorProps> = ({ iframeSrc }) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [iframeContent, setIframeContent] = useState<string>("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
@@ -24,6 +26,7 @@ const UICntainer: React.FC<IframeContentExtractorProps> = ({ iframeSrc }) => {
 
     return () => {
       window.removeEventListener("message", handleMessage);
+      setLoading(false);
     };
   }, [iframeSrc]);
 
@@ -38,32 +41,47 @@ const UICntainer: React.FC<IframeContentExtractorProps> = ({ iframeSrc }) => {
 
   console.log(iframeContent);
 
+  if (loading) return <div>Loading...</div>;
+
   return (
-    <div>
-      <iframe
-        ref={iframeRef}
-        src={iframeSrc}
-        width="600"
-        height="400"
-        onLoad={handleLoad}
-      />
-      <div>
-        <Highlight code={iframeContent} language="html" theme={themes.dracula}>
-          {({ className, style, tokens, getLineProps, getTokenProps }) => (
-            <pre className={className} style={style}>
-              {tokens.map((line, i) => (
-                <div key={i} {...getLineProps({ line })}>
-                  <span>{i + 1}</span>
-                  {line.map((token, key) => (
-                    <span key={key} {...getTokenProps({ token })} />
-                  ))}
-                </div>
-              ))}
-            </pre>
-          )}
-        </Highlight>
-      </div>
-    </div>
+    <Tabs defaultValue="account" className="w-[400px]">
+      <TabsList>
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="password">Password</TabsTrigger>
+      </TabsList>
+      <TabsContent value="account" className="mx-auto">
+        <iframe
+          ref={iframeRef}
+          src={iframeSrc}
+          className="w-[90vw]"
+          height={400}
+          onLoad={handleLoad}
+        />
+      </TabsContent>
+      <TabsContent value="password">
+        <div className="overflow-auto w-[90vw]">
+          <Highlight code={iframeContent} language="html">
+            {({ className, style, tokens, getLineProps, getTokenProps }) => (
+              <pre
+                className={className}
+                style={style}
+                data-line="{$frame['highlight_line']}"
+                data-start="{$frame['start_line']}"
+              >
+                {tokens.map((line, i) => (
+                  <div key={i} {...getLineProps({ line })}>
+                    <span>{i + 1}</span>
+                    {line.map((token, key) => (
+                      <span key={key} {...getTokenProps({ token })} />
+                    ))}
+                  </div>
+                ))}
+              </pre>
+            )}
+          </Highlight>
+        </div>
+      </TabsContent>
+    </Tabs>
   );
 };
 

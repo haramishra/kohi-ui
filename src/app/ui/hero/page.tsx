@@ -1,4 +1,5 @@
 import UICntainer from "@/components/ui-container";
+import ComponentsContainer from "@/components/ui/component-container";
 
 export default function Hero() {
   const components = [
@@ -64,5 +65,16 @@ export default function Hero() {
     },
   ];
 
-  return <UICntainer iframeSrc={components[0].path} />;
+  return (
+    <div className="">
+      {components.map((component) => (
+        <div key={component.path}>
+          <ComponentsContainer
+            iframeSrc={component.path}
+            name={component.name}
+          />
+        </div>
+      ))}
+    </div>
+  );
 }
