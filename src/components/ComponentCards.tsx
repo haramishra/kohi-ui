@@ -4,34 +4,54 @@ import Card from "./Card";
 
 const data = [
   {
+    title: "navbar",
+    image: "/images/ui/navbar.png",
+    link: "/ui/navbar",
+  },
+  {
     title: "Hero",
     image: "/images/hero.webp",
     link: "/ui/hero",
   },
   {
-    title: "Loaders",
+    title: "Features",
     image: "/images/ui/loader.png",
-    link: "/ui/loaders",
+    link: "/ui/feature-service",
   },
   {
-    title: "Text",
+    title: "logo cloud",
     component: <div />,
-    link: "/ui/text",
+    link: "/ui/logocloud",
   },
   {
-    title: "Input",
+    title: "CTA",
+    component: <div />,
+    link: "/ui/cta",
+  },
+  {
+    title: "portfolio",
+    component: <div />,
+    link: "/ui/portfolio ",
+  },
+  {
+    title: "side bar",
     image: "/images/ui/input.png",
-    link: "/ui/input",
+    link: "/ui/sidebar",
   },
   {
-    title: "Tab",
+    title: "Testimonial",
     image: "/images/ui/tabs.png",
-    link: "/ui/tabs",
+    link: "/ui/testimonial-success",
   },
   {
-    title: "Toggle",
+    title: "matrics",
     component: <div />,
-    link: "/ui/toggle",
+    link: "/ui/matrics",
+  },
+  {
+    title: "footer",
+    image: "/images/hero.webp",
+    link: "/ui/footer",
   },
 ];
 
