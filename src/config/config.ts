@@ -1,6 +1,15 @@
 import Portfolio from "@/app/ui/portfolio/page.";
 
-const components = {
+interface IComponentCollection {
+  path: string;
+  name: string;
+}
+
+interface ComponentCollectionsType {
+  [key: string]: IComponentCollection[];
+}
+
+const componentCollections: ComponentCollectionsType = {
   blog: [
     {
       path: "https://kohi-unifyui.pages.dev/resources/blog-sections/1/",
@@ -369,3 +378,7 @@ const components = {
     },
   ],
 };
+
+export default componentCollections;
+
+export type { ComponentCollectionsType, IComponentCollection };
