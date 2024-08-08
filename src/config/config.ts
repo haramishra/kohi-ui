@@ -1,5 +1,3 @@
-import Portfolio from "@/app/ui/portfolio/page.";
-
 interface IComponentCollection {
   path: string;
   name: string;
